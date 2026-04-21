@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Todo Task Card</title>
+  </head>
+  <body>
+    <article class="card" data-testid="test-todo-card">
+      <div class="view-mode">
+        <section class="top-section">
+          <label class="flex-box">
+            <input
+              class="todo-checkbox js-checkbox"
+              type="checkbox"
+              data-testid="test-todo-complete-toggle"
+            />
+            <span>Mark as complete</span>
+          </label>
+        </section>
+
+        <section class="task flex-box">
+          <h2 class="title js-title" data-testid="test-todo-title">
+            <!-- Finish Foundations Course -->
+          </h2>
+          <p
+            class="description js-description collapsed"
+            data-testid="test-todo-description test-todo-collapsible-section"
+            id="todo-description"
+          >
+            <!-- Complete the foundations course in The Odin Project along with all the
+          exercises. -->
+          </p>
+
+          <button
+            class="expand-btn"
+            data-testid="test-todo-expand-toggle"
+            aria-expanded="false"
+            aria-controls="todo-description"
+          >
+            Expand <i class="fa-solid fa-angle-down"></i>
+          </button>
+        </section>
+
+        <section class="extra-info flex-box">
+          <span
+            class="pill priority-indicator flex-box flex-box-icon"
+            data-testid="test-todo-priority test-todo-priority-indicator"
+            aria-label="Task priority: High"
+            ><i class="fa-solid fa-gauge"></i>
+            <span class="priority js-priority">High</span>
+          </span>
+          <!-- <span
+            class="status js-status pill flex-box flex-box-icon"
+            data-testid="test-todo-status"
+            aria-label="Task status: pending"
+            ><i class="fa-regular fa-clock"></i>
+            <span js-status-text>Pending</span>
+          </span> -->
+
+          <div class="status-section">
+            <select id="statusSelect" data-testid="test-todo-status-control">
+              <option value="Pending">Pending</option>
+              <option value="Done">Done</option>
+              <option value="In Progress">In Progress</option>
+            </select>
+          </div>
+          <div class="status-indicator js-status-indicator"></div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="timing flex-box">
+          <div class="due-time-container flex-box flex-box-icon">
+            <i class="fa-regular fa-calendar-days"></i>
+            <time
+              class="js-due-date"
+              datetime="2026-04-16T18:00"
+              data-testid="test-todo-due-date"
+            ></time>
+          </div>
+
+          <div
+            class="remaining-time-container js-remaining-time flex-box flex-box-icon"
+            data-testid="test-todo-overdue-indicator"
+          >
+            <i class="fa-regular fa-clock"></i>
+            <time class="remaining-time" data-testid="test-todo-time-remaining"
+              >Due in 5 days</time
+            >
+          </div>
+        </section>
+
+        <section class="tags">
+          <ul class="flex-box" role="list" data-testid="test-todo-tags">
+            <li class="pill work" data-testid="test-todo-tag-work">work</li>
+            <li class="pill urgent" data-testid="test-todo-tag-urgent">
+              urgent
+            </li>
+            <li class="pill design" data-testid="test-todo-tag-design">
+              design
+            </li>
+          </ul>
+        </section>
+
+        <section class="buttons flex-box">
+          <button
+            class="edit-button js-edit-btn flex-box"
+            data-testid="test-todo-edit-button"
+          >
+            <i class="fa-solid fa-pencil"></i> Edit
+          </button>
+          <button
+            class="delete-button js-delete-btn flex-box flex-box-icon"
+            data-testid="test-todo-delete-button"
+          >
+            <i class="fa-regular fa-trash-can"></i> Delete
+          </button>
+        </section>
+
+        <div class="divider"></div>
+
+        <div class="motivation flex-box">
+          <i class="fa-solid fa-arrows-to-circle"></i>
+          Stay focused and keep going, Reem!
+          <i class="fa-solid fa-rocket"></i>
+        </div>
+      </div>
+
+      <!-- Edit Form -->
+      <form class="edit-form" data-testid="test-todo-edit-form">
+        <section class="title-input form-group">
+          <label for="edit-title">Title</label>
+          <textarea
+            id="edit-title"
+            data-testid="test-todo-edit-title-input"
+          ></textarea>
+        </section>
+
+        <section class="description-input form-group">
+          <label for="edit-description">Description</label>
+          <textarea
+            id="edit-description"
+            data-testid="test-todo-edit-description-input"
+          ></textarea>
+        </section>
+
+        <div class="form-row">
+          <section class="priority-input">
+            <label for="edit-priority">priority</label>
+            <select
+              id="edit-priority"
+              data-testid="test-todo-edit-priority-select"
+            >
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </section>
+
+          <section class="date-input">
+            <label for="edit-date">Due Date</label>
+            <input
+              id="edit-date"
+              type="date"
+              data-testid="test-todo-edit-due-date-input"
+            />
+          </section>
+        </div>
+
+        <section class="form-actions">
+          <button
+            class="cancel-btn"
+            type="button"
+            data-testid="test-todo-cancel-button"
+          >
+            Cancel
+          </button>
+          <button
+            class="save-btn"
+            type="button"
+            data-testid="test-todo-save-button"
+          >
+            Save
+          </button>
+        </section>
+      </form>
+    </article>
+    <script src="scripts/todo-card.js"></script>
+  </body>
+</html>
